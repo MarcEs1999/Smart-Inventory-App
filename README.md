@@ -1,70 +1,152 @@
-# Getting Started with Create React App
+# StockFlow Inventory Manager
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+StockFlow is a modern, responsive inventory management system built with React, Material‑UI, and Firebase. It supports barcode scanning (both hardware and camera modes), real‑time inventory updates, audit logging, usage reports, and role‑based user management—all wrapped in a modern dark/frosted theme.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Authentication & User Management:**
+  - Secure login, registration (with an admin key for role selection), and password reset.
+  - Role‑based permissions with admins able to manage users and update roles.
+  
+- **Inventory Management:**
+  - Add, edit, and delete inventory items.
+  - Barcode scanning (hardware & camera) for quick item lookup and editing.
+  - Barcode printing for labels (designed for Zebra 2.25" x 1.25" labels).
+  
+- **Audit Logging & Reports:**
+  - Detailed audit logs that capture every update (with before/after values and diff highlighting).
+  - Usage reports and analytics with dynamic charts (bar, line, stacked bar) to visualize quantity changes.
+  
+- **Modern UI:**
+  - A dark theme with frosted glass effects, retro typography (e.g., "Press Start 2P"), and a consistent layout using Material‑UI.
+  - Responsive navigation with a fixed-top NavBar and a collapsible Sidebar.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Node.js** (v14+ is recommended)
+- **npm** (v6+)
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/MarcEs1999/Smart-Inventory-App.git
+   cd Smart-Inventory-App/client
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Configure Firebase:**
+   - Set up your Firebase project and update your `src/firebase.js` file with your API keys and configuration settings.
+   - Ensure that Firestore and Authentication are properly configured and that your Firestore security rules reflect your role‑based permissions.
 
-### `npm run eject`
+4. **Run the development server:**
+   ```bash
+   npm start
+   ```
+   The app will run at [http://localhost:3000](http://localhost:3000).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+client/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Auth/
+│   │   │   ├── Login.js
+│   │   │   ├── Register.js
+│   │   │   └── PasswordReset.js
+│   │   ├── Dashboard/
+│   │   │   ├── Dashboard.js
+│   │   │   ├── AuditLog.js
+│   │   │   ├── Logout.js
+│   │   │   └── Sidebar.js
+│   │   ├── Inventory/
+│   │   │   ├── AddItem.js
+│   │   │   ├── ListItem.js
+│   │   │   ├── EditItem.js
+│   │   │   ├── BarcodeScanning.js
+│   │   │   ├── ZXingBarcodeScanning.js
+│   │   │   ├── BarcodePrint.js
+│   │   │   └── BarcodePrintModal.js
+│   │   ├── Reports/
+│   │   │   ├── UsageReports.js
+│   │   │   └── UsageHelper.js
+│   │   ├── UI/
+│   │   │   ├── NavBar.js
+│   │   │   └── Modal.js
+│   │   └── User/
+│   │       ├── UserSettings.js
+│   │       └── AdminUserManagement.js
+│   ├── firebase.js
+│   ├── App.js
+│   ├── App.css
+│   └── index.js
+└── package.json
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## Customization & Styling
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Theme & Colors:**  
+  StockFlow uses a dark, frosted theme achieved with CSS backdrop filters and semi‑transparent backgrounds. The retro font ("Press Start 2P") is used for headings to create a distinctive style.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Responsive UI:**  
+  The fixed-top NavBar and collapsible Sidebar (using Material‑UI components) provide a consistent experience across all pages.
 
-### Code Splitting
+- **Barcode & Audit Modules:**  
+  Components for barcode scanning, printing, audit logs, and usage reports follow the same modern styling for a unified look.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+To create a production build:
+```bash
+npm run build
+```
+Then follow your preferred deployment process for React apps (e.g., Firebase Hosting, Vercel, or Netlify).
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Troubleshooting
 
-### Advanced Configuration
+- **Firebase:**  
+  Ensure your Firebase API keys and configuration are correct in `src/firebase.js` and that your Firestore security rules are set up for role‑based access.
+- **Dependencies:**  
+  If you encounter dependency issues, try running:
+  ```bash
+  npm audit fix
+  ```
+  or
+  ```bash
+  npm install --legacy-peer-deps
+  ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## Future Enhancements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Further polish UI animations and transitions.
+- Implement push notifications for low stock alerts.
+- Expand user role management with more granular permissions.
+- Refine and extend reports/analytics based on user feedback.
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is designed for clarity, consistency, and ease of use—suitable for class projects and can serve as a foundation for more advanced enterprise solutions.
+
+Feel free to modify this README to fit any future updates or additional functionality.

@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Register from "./components/Auth/Register";
+import Login from "./components/Auth/Login";
+import PasswordReset from "./components/Auth/PasswordReset";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        {/* Public routes for authentication */}
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/reset" element={<PasswordReset />} />
+
+        {/* Protected Dashboard route */}
+        <Route path="/dashboard/*" element={<Dashboard />} />
+
+        {/* Default route: redirect to login or show a welcome page */}
+        <Route path="/" element={<Login />} />
+      </Routes>
+    </Router>
   );
 }
 
