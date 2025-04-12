@@ -92,8 +92,6 @@ client/
 │   │       └── AdminUserManagement.js
 │   ├── firebase.js
 │   ├── App.js
-│   ├── App.css
-│   └── index.js
 └── package.json
 ```
 
